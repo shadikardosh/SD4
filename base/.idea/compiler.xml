@@ -11,11 +11,5 @@
         <module name="poke-test" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="base" target="1.5" />
-      <module name="library" target="1.8" />
-      <module name="poke-app" target="1.8" />
-      <module name="poke-test" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
