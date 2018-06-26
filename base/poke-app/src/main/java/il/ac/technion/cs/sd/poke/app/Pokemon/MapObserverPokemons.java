@@ -35,7 +35,10 @@ public class MapObserverPokemons implements MapObserver {
                 try {
                     while (!pokemonsDB.insertEntry(pId, p.getBestInstanceLevel().toString()).get());
                     Map<String, List<String>> hist = p.getTrainersHistory();
-//                    List<String> trainers = Arrays.asList(hist.keySet());
+                    List<String> Alltrainers = p.getAllHolders();
+                    List<String> currentTrainers = p.getCurrentHolders();
+                    pokemonsDB.dumpList(pId + ";" + "AllTrainers", Alltrainers).get();
+                    pokemonsDB.dumpList(pId + ";" + "CurrentTrainers", currentTrainers).get();
                     hist.forEach((tId,list)-> {
                         try {
                             pokemonsDB.dumpList(pId + ";" + tId, list).get() ;

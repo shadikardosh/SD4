@@ -22,6 +22,7 @@ public class MapObservable {
 
     public void setElements(Map<String, String> map, ActionType type) {
         this.elements = map;
+        this.type = type;
         onChange();
     }
 

@@ -1,24 +1,24 @@
 package il.ac.technion.cs.sd.poke.app.Trainer;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Trainer {
     static public List<String> validPokemons;
     private String tId;
-    private Map<String, Integer> bestPokemonLevel;
+    private Map<String, List<Integer>> pokemonLevels;
     private Map<String, List<String>> pokemonsHistory;
 
     Trainer(String tId, String pId, Integer level){
         this.tId = tId;
-        bestPokemonLevel = new HashMap<>();
+        pokemonLevels = new HashMap<>();
+        List<Integer> levels =  new ArrayList<>();
+        levels.add(level);
         pokemonsHistory = new HashMap<>();
-        bestPokemonLevel.put(pId, level);
         List<String> history = new ArrayList<>();
         history.add("1");
         pokemonsHistory.put(pId, history);
+        pokemonLevels.put(pId, levels);
     }
 
     public void catchPokemon(String pId, Integer level){
@@ -28,13 +28,14 @@ public class Trainer {
             last += 1;
             history.add(last.toString());
             pokemonsHistory.put(pId, history);
-            if (bestPokemonLevel.get(pId) < level)
-                bestPokemonLevel.put(pId, level);
+            pokemonLevels.get(pId).add(level);
         }else {
             List<String> history = new ArrayList<>();
+            List<Integer> levels = new ArrayList<>();
+            levels.add(level);
             history.add("1");
             pokemonsHistory.put(pId, history);
-            bestPokemonLevel.put(pId, level);
+            pokemonLevels.put(pId, levels);
         }
     }
 
@@ -46,7 +47,11 @@ public class Trainer {
         if(last < 0) return;
         history.add(last.toString());
         pokemonsHistory.put(tId, history);
-        bestPokemonLevel.remove(pId);
+        Integer minLevel = Integer.MAX_VALUE;
+        for(Integer l: pokemonLevels.get(pId))
+            if(l<minLevel) minLevel = l;
+        pokemonLevels.get(pId).remove(minLevel);
+
     }
 
     public Map<String, List<String>> getCleanHistory(){
@@ -58,11 +63,19 @@ public class Trainer {
         return hist;
     }
 
+    public List<String> getAllPokemons(){
+        return new ArrayList<>(pokemonLevels.keySet()).stream().filter(x->isPokemonValid(x)).collect(Collectors.toList());
+    }
+
+    public List<String> getCurrentPokemons(){
+        return pokemonLevels.keySet().stream().filter(x->pokemonLevels.get(x).size()>0&&isPokemonValid(x)).collect(Collectors.toList());
+    }
+
     public Integer getBestPokemonLevel(){
         Integer maxLevel = -1;
-        for(Map.Entry<String,Integer> e : bestPokemonLevel.entrySet()){
-            if (isPokemonValid(e.getKey()) && e.getValue() > maxLevel)
-               maxLevel = e.getValue();
+        for(Map.Entry<String,List<Integer>> e : pokemonLevels.entrySet()){
+            if (isPokemonValid(e.getKey()) && Collections.max(e.getValue()) > maxLevel)
+               maxLevel = Collections.max(e.getValue());
         }
         return maxLevel;
     }
