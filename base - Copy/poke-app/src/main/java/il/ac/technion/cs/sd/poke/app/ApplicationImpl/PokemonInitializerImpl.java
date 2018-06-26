@@ -1,10 +1,12 @@
-package main.java.il.ac.technion.cs.sd.poke.app.ApplicationImpl;
+package il.ac.technion.cs.sd.poke.app.ApplicationImpl;
 
+import com.google.gson.JsonObject;
 import il.ac.technion.cs.sd.poke.app.ActionType;
 import il.ac.technion.cs.sd.poke.app.PokemonInitializer;
 import org.json.simple.parser.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
 import javax.xml.bind.Element;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,9 +31,9 @@ public class PokemonInitializerImpl implements PokemonInitializer {
         }
         Map<String,String> elements = new HashMap<>();
         for(Object o : a){
-            JSONObject obj = (JSONObject) o;
-//            ActionType type = obj.get("type").toString()
+            JsonObject obj = (JsonObject) o;
+            ActionType type = obj.get("type").toString()
         }
-    return null;
+
     }
 }
