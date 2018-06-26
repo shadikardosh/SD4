@@ -1,13 +1,13 @@
-package il.ac.technion.cs.sd.poke.app.Observe;
+package main.java.il.ac.technion.cs.sd.poke.app.Observe;
 
-import il.ac.technion.cs.sd.poke.app.ActionType;
-
+import main.java.il.ac.technion.cs.sd.poke.app.ActionType;
+import il.ac.technion.cs.sd.poke.app.Observe;
 import java.util.HashSet;
 import java.util.Collection;
 import java.util.Map;
 
 public class MapObservable {
-    private  Collection<MapObserver> observers = new HashSet<>();
+    private  Collection<il.ac.technion.cs.sd.poke.app.Observe.MapObserver> observers = new HashSet<>();
     private Map<String, String> elements;
     private ActionType type;
 
