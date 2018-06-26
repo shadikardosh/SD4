@@ -1,4 +1,4 @@
-package main.java.TestUtils;
+package TestUtils;
 
 
 import il.ac.technion.cs.sd.poke.ext.FutureSecureDatabase;

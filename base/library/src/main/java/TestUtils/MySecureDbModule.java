@@ -1,4 +1,4 @@
-package main.java.TestUtils;
+package TestUtils;
 
 import com.google.inject.AbstractModule;
 import il.ac.technion.cs.sd.poke.ext.FutureSecureDatabaseFactory;

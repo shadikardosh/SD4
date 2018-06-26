@@ -1,4 +1,4 @@
-package main.java.DbController;
+package DbController;
 
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package main.java.DbController;
+package DbController;
 
 public interface ControllerFactory {
     Controller open(String dbName);

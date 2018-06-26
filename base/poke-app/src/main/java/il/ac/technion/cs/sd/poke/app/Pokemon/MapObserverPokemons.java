@@ -2,7 +2,7 @@ package il.ac.technion.cs.sd.poke.app.Pokemon;
 import il.ac.technion.cs.sd.poke.app.ActionType;
 import il.ac.technion.cs.sd.poke.app.Observe.MapObservable;
 import il.ac.technion.cs.sd.poke.app.Observe.MapObserver;
-//import main.java.DbController.Controller;
+import DbController.Controller;
 
 
 import java.util.*;

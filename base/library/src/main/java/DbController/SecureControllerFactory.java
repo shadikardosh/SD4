@@ -1,4 +1,4 @@
-package main.java.DbController;
+package DbController;
 
 import com.google.inject.Inject;
 import il.ac.technion.cs.sd.poke.ext.FutureSecureDatabase;

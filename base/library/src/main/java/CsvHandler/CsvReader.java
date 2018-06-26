@@ -1,4 +1,4 @@
-package main.java.CsvHandler;
+package CsvHandler;
 
 import java.io.BufferedReader;
 import java.io.IOException;
